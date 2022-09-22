@@ -1,0 +1,29 @@
+<%- include("header") -%>
+
+<div class="box" id="heading">
+ <h1><%= listTitle %></h1>
+ </div>
+
+ <div class="box">
+   
+   <!--newListItems is a declared in html-->
+   <!--this forLoop starts at the beginning of the array and will continue to increment 1 as long as i is less than the length of the array-->
+   <% for (var i=0; i<newListItems.length; i++) { %>
+    <!--a new <p> is rendered-->
+    <div class="item">
+     <input type="checkbox">
+     <p><%= newListItems[i] %></p>
+    </div> 
+    <% } %>
+  
+
+  <!--"/" serves as the root route-->
+  <!--"post" posts the information in the form to the server-->
+  <form class="item" action="/" method="post">
+   <!--the text will be saved as newItem and picked up by body parser-->
+   <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+   <button type="submit" name="list" value="<%= listTitle %>">+</button>
+  </form>
+</div>
+
+<%- include("footer") -%>
