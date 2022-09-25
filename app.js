@@ -57,18 +57,16 @@ app.post("/", (req, res) => {
   //it will redirect to the home route, which will trigger the app.get
   res.redirect("/");
  }
-
+ console.log(req.body);
 });
 
 app.get("/work", (req, res) => {
- res.render("list", {listTitle: "Work", newListItems: workItems});
+ res.render("list", {listTitle: "Work", newListItems: workItems}); 
 });
 
 app.get("/about", (req, res) => {
  res.render("about");
 })
-
-
 
 app.listen(port, () => {
  console.log("Server started on port 3000");

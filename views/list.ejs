@@ -2,9 +2,9 @@
 
 <div class="box" id="heading">
  <h1><%= listTitle %></h1>
- </div>
+</div>
 
- <div class="box">
+<div class="box">
    
    <!--newListItems is a declared in html-->
    <!--this forLoop starts at the beginning of the array and will continue to increment 1 as long as i is less than the length of the array-->
@@ -26,4 +26,24 @@
   </form>
 </div>
 
+<!--When the submit button is pressed a couple things are sent:
+1. <form> 
+    class="item"
+    action="/"
+    method="post"
+
+    the form obtains a newItem input and assigns it the an item variable
+
+2. <input>
+    type="text"
+    name="newItem"   
+
+
+
+3. <button>
+    name="list"
+    value="<%= listTitle %>"
+
+    the name of the button is assigned the name="list" and the value="<%= listTitlte %>", which allows the JavaScript to identify where the button is specifically located in the Html and also identify what kind of listTitle the address possesses.
+-->
 <%- include("footer") -%>
