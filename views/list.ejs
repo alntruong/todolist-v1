@@ -22,28 +22,8 @@
   <form class="item" action="/" method="post">
    <!--the text will be saved as newItem and picked up by body parser-->
    <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
-   <button type="submit" name="list" value="<%= listTitle %>">+</button>
+   <button type="submit" name="list" value=<%= listTitle %>>+</button>
   </form>
 </div>
 
-<!--When the submit button is pressed a couple things are sent:
-1. <form> 
-    class="item"
-    action="/"
-    method="post"
-
-    the form obtains a newItem input and assigns it the an item variable
-
-2. <input>
-    type="text"
-    name="newItem"   
-
-
-
-3. <button>
-    name="list"
-    value="<%= listTitle %>"
-
-    the name of the button is assigned the name="list" and the value="<%= listTitlte %>", which allows the JavaScript to identify where the button is specifically located in the Html and also identify what kind of listTitle the address possesses.
--->
 <%- include("footer") -%>

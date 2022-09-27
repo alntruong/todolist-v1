@@ -1,19 +1,20 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const date = require(__dirname + "/date.js")
 
 const port= 3000;
 
 const app = express();
 
 //array is delcared outside of app.post and app.get for scope reasons
-let items = ["Study", "Gym"];
-let workItems = [];
+const items = ["Study", "Gym"];
+const workItems = [];
+
 //Using EJS with Express
 //this sets our app's view engine to ejs
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({ extended: false }));
-
 //when using express, it doesn't serve up all the files (only app.js and views folder)
 //any file that you want to be used, must be served by the server even if the file exists
 //if we want to use the css file for our website we must explicitly tell express the location of the folder (public)
@@ -21,23 +22,10 @@ app.use(express.static("public"));
 
 app.get("/", (req, res) => {
 
- //set today equal to current date
- let today = new Date();
-
- //specifically picking out what we want to incude and how we want the date to be dislayed
- let options = { 
-  weekday: "long",  
-  month: "long", 
-  day: "numeric", 
- };
- 
- //we use toLocaleDateString to enable make this work in addition to adding certain parameters
- let day = today.toLocaleDateString("en-US", options);
-
- console.log(day);
+const day = date.getDate();
 
  //dayOfWeek(html): day(js), newListItems(html): items(js)
- res.render("list", { listTitle: day, newListItems: items });
+ res.render("list", {listTitle: day, newListItems: items});
  
 });
 
@@ -45,7 +33,7 @@ app.get("/", (req, res) => {
 app.post("/", (req, res) => {
 
  //it will save the value of the newItem and pass it to the item variable.
- let item = req.body.newItem;
+ const item = req.body.newItem;
 
  if(req.body.list === "Work") {
   workItems.push(item);
